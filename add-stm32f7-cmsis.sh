@@ -30,7 +30,6 @@ fi
 
 # package specific definitions
 CMSIS_CORE_PACK_LOCATION="$HOME/Projects/xpacks/arm-cmsis-core.git"
-CONTROLLER_MODEL=$2 # e.g.: stm32f746xx
 CMSIS_CORE_PACK_GIT_HOME="https://github.com/xpacks/arm-cmsis-core.git"
 
 if [ ! -e ${CMSIS_CORE_PACK_LOCATION} ]
@@ -50,8 +49,8 @@ mkdir -p "${DEST_SOURCE_DIR}"
 cp "${PACK_INCLUDE_DIR}"/cmsis_device.h "${DEST_INCLUDE_DIR}"
 cp "${PACK_INCLUDE_DIR}"/stm32f7xx.h "${DEST_INCLUDE_DIR}"
 cp "${PACK_INCLUDE_DIR}"/system_stm32f7xx.h "${DEST_INCLUDE_DIR}"
-cp "${PACK_INCLUDE_DIR}"/$CONTROLLER_MODEL.h "${DEST_INCLUDE_DIR}"
+cp "${PACK_INCLUDE_DIR}"/$2.h "${DEST_INCLUDE_DIR}"
 cp "${PACK_SOURCE_DIR}"/system_stm32f7xx.c "${DEST_SOURCE_DIR}"
-cp "${PACK_SOURCE_DIR}"/vectors_$CONTROLLER_MODEL.c "${DEST_SOURCE_DIR}"
+cp "${PACK_SOURCE_DIR}"/vectors_$2.c "${DEST_SOURCE_DIR}"
 cp "${CMSIS_CORE_PACK_LOCATION}/CMSIS/Include"/*.h "${DEST_INCLUDE_DIR}"
 

@@ -36,13 +36,16 @@ mkdir -p "${DEST_INCLUDE_DIR}"
 mkdir -p "${DEST_INCLUDE_DIR}/Legacy"
 mkdir -p "${DEST_SOURCE_DIR}"
 
-#copy required files
+# copy required files
 cp "${PACK_INCLUDE_DIR}"/*.h "${DEST_INCLUDE_DIR}"
 cp "${PACK_INCLUDE_DIR}/Legacy"/*.h "${DEST_INCLUDE_DIR}/Legacy"
 cp "${PACK_SOURCE_DIR}"/*.c "${DEST_SOURCE_DIR}"
 
-# copy configuration file
-if [ ! -f "${PROJECT_CONFIG_DIR}"/stm32f7xx_hal_conf.h ]
+# delete the template file copied in include dir
+rm "${DEST_INCLUDE_DIR}"/stm32f7xx_hal_conf_template.h
+
+# copy configuration file if not already there
+if [ ! -e "${PROJECT_CONFIG_DIR}"/stm32f7xx_hal_conf.h ]
 then
     cp "${PACK_INCLUDE_DIR}"/stm32f7xx_hal_conf_template.h "${PROJECT_CONFIG_DIR}"/stm32f7xx_hal_conf.h
 fi
