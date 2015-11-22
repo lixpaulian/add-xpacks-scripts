@@ -60,6 +60,9 @@ cp "${PACK_SOURCE_DIR}"/*.c "${DEST_SOURCE_DIR}"
 cp "${PACK_SOURCE_DIR}/portable/GCC/${CORTEX_PORT}/port.c" "${DEST_SOURCE_DIR}"
 cp "${PACK_SOURCE_DIR}/portable/GCC/${CORTEX_PORT}/portmacro.h" "${DEST_INCLUDE_DIR}"
 cp "${PACK_SOURCE_DIR}/portable/MemMang/heap_$3.c" "${DEST_SOURCE_DIR}"
+cp "${PACK_LOCATION}/FreeRTOS/CMSIS_RTOS/cmsis_os.c" "${DEST_SOURCE_DIR}"
+cp "${PACK_LOCATION}/FreeRTOS/CMSIS_RTOS/cmsis_os.h" "${DEST_INCLUDE_DIR}"
+
 
 # copy configuration file from template
 if [ ! -f "${PROJECT_CONFIG_DIR}"/FreeRTOSConfig.h ]
