@@ -14,6 +14,7 @@ PROJECT_LOCATION=$1 # e.g. $HOME/Projects/ARM-CortexMx/CortexM4
 DEST_LOCATION="${PROJECT_LOCATION}/xpacks/cmsis"
 DEST_INCLUDE_DIR="${DEST_LOCATION}/include"
 DEST_SOURCE_DIR="${DEST_LOCATION}/src"
+DEST_CMSIS_DRIVERS_INCLUDE_DIR="${DEST_LOCATION}/drivers"
 PROJECT_CONFIG_DIR="${PROJECT_LOCATION}/include"
 
 # package definitions
@@ -29,13 +30,13 @@ then
 fi
 
 # package specific definitions
-CMSIS_CORE_PACK_LOCATION="$HOME/Projects/xpacks/arm-cmsis-core.git"
-CMSIS_CORE_PACK_GIT_HOME="https://github.com/xpacks/arm-cmsis-core.git"
+CMSIS_PACK_LOCATION="$HOME/Projects/xpacks/arm-cmsis.git"
+CMSIS_PACK_GIT_HOME="https://github.com/xpacks/arm-cmsis.git"
 
-if [ ! -e ${CMSIS_CORE_PACK_LOCATION} ]
+if [ ! -e ${CMSIS_PACK_LOCATION} ]
 then
-    mkdir -p ${CMSIS_CORE_PACK_LOCATION}
-    git clone $CMSIS_CORE_PACK_GIT_HOME ${CMSIS_CORE_PACK_LOCATION}
+    mkdir -p ${CMSIS_PACK_LOCATION}
+    git clone $CMSIS_PACK_GIT_HOME ${CMSIS_PACK_LOCATION}
 fi
 
 # delete old components
@@ -44,6 +45,7 @@ rm -rf "${DEST_LOCATION}"
 # create new dirs
 mkdir -p "${DEST_INCLUDE_DIR}"
 mkdir -p "${DEST_SOURCE_DIR}"
+mkdir -p "${DEST_CMSIS_DRIVERS_INCLUDE_DIR}"
 
 #copy required files
 cp "${PACK_INCLUDE_DIR}"/cmsis_device.h "${DEST_INCLUDE_DIR}"
@@ -52,5 +54,6 @@ cp "${PACK_INCLUDE_DIR}"/system_stm32f4xx.h "${DEST_INCLUDE_DIR}"
 cp "${PACK_INCLUDE_DIR}"/$2.h "${DEST_INCLUDE_DIR}"
 cp "${PACK_SOURCE_DIR}"/system_stm32f4xx.c "${DEST_SOURCE_DIR}"
 cp "${PACK_SOURCE_DIR}"/vectors_$2.c "${DEST_SOURCE_DIR}"
-cp "${CMSIS_CORE_PACK_LOCATION}/CMSIS/Include"/*.h "${DEST_INCLUDE_DIR}"
+cp "${CMSIS_PACK_LOCATION}/CMSIS/Include"/*.h "${DEST_INCLUDE_DIR}"
+cp "${CMSIS_PACK_LOCATION}/CMSIS/Driver/Include"/*.h "${DEST_CMSIS_DRIVERS_INCLUDE_DIR}"
 
