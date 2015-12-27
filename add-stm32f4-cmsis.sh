@@ -14,13 +14,18 @@ PROJECT_LOCATION=$1 # e.g. $HOME/Projects/ARM-CortexMx/CortexM4
 DEST_LOCATION="${PROJECT_LOCATION}/xpacks/cmsis"
 DEST_INCLUDE_DIR="${DEST_LOCATION}/include"
 DEST_SOURCE_DIR="${DEST_LOCATION}/src"
-DEST_CMSIS_DRIVERS_INCLUDE_DIR="${DEST_LOCATION}/drivers"
+DEST_CMSIS_DRIVERS_DIR="${DEST_LOCATION}/drivers"
 PROJECT_CONFIG_DIR="${PROJECT_LOCATION}/include"
+
+DRIVERS_DEST_LOCATION="${PROJECT_LOCATION}/xpacks/drivers"
+DRIVERS_DEST_INCLUDE_DIR="${DRIVERS_DEST_LOCATION}/include"
+DRIVERS_DEST_SOURCE_DIR="${DRIVERS_DEST_LOCATION}/src"
 
 # package definitions
 PACK_LOCATION="$HOME/Projects/xpacks/stm32f4-cmsis.git"
 PACK_INCLUDE_DIR="${PACK_LOCATION}/Drivers/CMSIS/Device/ST/STM32F4xx/Include"
 PACK_SOURCE_DIR="${PACK_LOCATION}/Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates"
+PACK_DRIVERS_DIR="${PACK_LOCATION}/CMSIS/Driver"
 PACK_GIT_HOME="https://github.com/xpacks/stm32f4-cmsis.git"
 
 if [ ! -e ${PACK_LOCATION} ]
@@ -41,11 +46,14 @@ fi
 
 # delete old components
 rm -rf "${DEST_LOCATION}"
+rm -rf "${DRIVERS_DEST_LOCATION}"
 
 # create new dirs
 mkdir -p "${DEST_INCLUDE_DIR}"
 mkdir -p "${DEST_SOURCE_DIR}"
-mkdir -p "${DEST_CMSIS_DRIVERS_INCLUDE_DIR}"
+mkdir -p "${DEST_CMSIS_DRIVERS_DIR}"
+mkdir -p "${DRIVERS_DEST_INCLUDE_DIR}"
+mkdir -p "${DRIVERS_DEST_SOURCE_DIR}"
 
 #copy required files
 cp "${PACK_INCLUDE_DIR}"/cmsis_device.h "${DEST_INCLUDE_DIR}"
@@ -53,7 +61,10 @@ cp "${PACK_INCLUDE_DIR}"/stm32f4xx.h "${DEST_INCLUDE_DIR}"
 cp "${PACK_INCLUDE_DIR}"/system_stm32f4xx.h "${DEST_INCLUDE_DIR}"
 cp "${PACK_INCLUDE_DIR}"/$2.h "${DEST_INCLUDE_DIR}"
 cp "${PACK_SOURCE_DIR}"/system_stm32f4xx.c "${DEST_SOURCE_DIR}"
-cp "${PACK_SOURCE_DIR}"/vectors_$2.c "${DEST_SOURCE_DIR}"
+cp "${PACK_SOURCE_DIR}"/gcc/vectors_$2.c "${DEST_SOURCE_DIR}"
 cp "${CMSIS_PACK_LOCATION}/CMSIS/Include"/*.h "${DEST_INCLUDE_DIR}"
-cp "${CMSIS_PACK_LOCATION}/CMSIS/Driver/Include"/*.h "${DEST_CMSIS_DRIVERS_INCLUDE_DIR}"
+cp "${CMSIS_PACK_LOCATION}/CMSIS/Driver/Include"/*.h "${DEST_CMSIS_DRIVERS_DIR}"
+cp "${PACK_DRIVERS_DIR}"/*.h "${DRIVERS_DEST_INCLUDE_DIR}"
+cp "${PACK_DRIVERS_DIR}"/*.c "${DRIVERS_DEST_SOURCE_DIR}"
+
 
