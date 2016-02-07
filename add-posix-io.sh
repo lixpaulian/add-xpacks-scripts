@@ -37,5 +37,5 @@ mkdir -p "${DEST_SOURCE_DIR}"
 
 #copy required files
 cp -r "${PACK_INCLUDE_DIR}"/* "${DEST_INCLUDE_DIR}"
-cp "${PACK_SOURCE_DIR}"/*.cpp "${DEST_SOURCE_DIR}"
+cp -r "${PACK_SOURCE_DIR}"/* "${DEST_SOURCE_DIR}"
 
