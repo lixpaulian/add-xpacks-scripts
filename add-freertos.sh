@@ -39,7 +39,7 @@ PROJECT_CONFIG_DIR="${PROJECT_LOCATION}/include"
 PACK_LOCATION="$HOME/Projects/xpacks/freertos.git"
 PACK_INCLUDE_DIR="${PACK_LOCATION}/FreeRTOS/Source/include"
 PACK_SOURCE_DIR="${PACK_LOCATION}/FreeRTOS/Source"
-PACK_GIT_HOME="https://github.com/lixpaulian/freertos.git"
+PACK_GIT_HOME="https://github.com/xpacks/freertos.git"
 
 if [ ! -e ${PACK_LOCATION} ]
 then
@@ -60,12 +60,12 @@ cp "${PACK_SOURCE_DIR}"/*.c "${DEST_SOURCE_DIR}"
 cp "${PACK_SOURCE_DIR}/portable/GCC/${CORTEX_PORT}/port.c" "${DEST_SOURCE_DIR}"
 cp "${PACK_SOURCE_DIR}/portable/GCC/${CORTEX_PORT}/portmacro.h" "${DEST_INCLUDE_DIR}"
 cp "${PACK_SOURCE_DIR}/portable/MemMang/heap_$3.c" "${DEST_SOURCE_DIR}"
-cp "${PACK_LOCATION}/FreeRTOS/CMSIS_RTOS/cmsis_os.c" "${DEST_SOURCE_DIR}"
-cp "${PACK_LOCATION}/FreeRTOS/CMSIS_RTOS/cmsis_os.h" "${DEST_INCLUDE_DIR}"
+cp -R "${PACK_LOCATION}/cmsis-plus/include"/* "${DEST_INCLUDE_DIR}"
+#cp -R "${PACK_LOCATION}/cmsis-plus/src"/* "${DEST_SOURCE_DIR}"
 
 
 # copy configuration file from template
 if [ ! -f "${PROJECT_CONFIG_DIR}"/FreeRTOSConfig.h ]
 then
-    cp "${PACK_LOCATION}"/FreeRTOS/FreeRTOSConfig_template.h "${PROJECT_CONFIG_DIR}"/FreeRTOSConfig.h
+    cp "${PACK_LOCATION}"/templates/FreeRTOSConfig.h "${PROJECT_CONFIG_DIR}"/FreeRTOSConfig.h
 fi
