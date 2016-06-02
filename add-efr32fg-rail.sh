@@ -17,7 +17,7 @@ DEST_INCLUDE_DIR="${PROJECT_LOCATION}/xpacks/efr32fg/include"
 DEST_SOURCE_DIR="${PROJECT_LOCATION}/xpacks/efr32fg/src"
 
 # sub-dirs to copy files to
-CMSIS_DIR="cmsis"
+#CMSIS_DIR="cmsis"
 DEVICE_DIR="EFR32FG1P"
 DRIVERS_DIR="emdrv"
 LIBRARY_DIR="emlib"
@@ -38,7 +38,7 @@ fi
 rm -rf "${PROJECT_LOCATION}/xpacks/efr32fg"
 
 # create new dirs
-mkdir -p "${DEST_INCLUDE_DIR}/${CMSIS_DIR}"
+#mkdir -p "${DEST_INCLUDE_DIR}/${CMSIS_DIR}"
 mkdir -p "${DEST_INCLUDE_DIR}/${DEVICE_DIR}"
 mkdir -p "${DEST_INCLUDE_DIR}/${DRIVERS_DIR}"
 mkdir -p "${DEST_INCLUDE_DIR}/${LIBRARY_DIR}"
@@ -52,7 +52,7 @@ mkdir -p "${DEST_SOURCE_DIR}/${BSP_DIR}"
 mkdir -p "${DEST_SOURCE_DIR}/${RAIL_LIB}"
 
 # copy required files
-cp "${PACK_LOCATION}/submodules/${CMSIS_DIR}/Include"/*.h "${DEST_INCLUDE_DIR}/${CMSIS_DIR}"
+#cp "${PACK_LOCATION}/submodules/${CMSIS_DIR}/Include"/*.h "${DEST_INCLUDE_DIR}/${CMSIS_DIR}"
 cp "${PACK_LOCATION}/submodules/Device/SiliconLabs/${DEVICE_DIR}/Include"/*.h "${DEST_INCLUDE_DIR}/${DEVICE_DIR}"
 cp "${PACK_LOCATION}/submodules/${LIBRARY_DIR}/inc"/*.h "${DEST_INCLUDE_DIR}/${LIBRARY_DIR}"
 find "${PACK_LOCATION}/submodules/${DRIVERS_DIR}" -name '*.h' -exec cp '{}' "${DEST_INCLUDE_DIR}/${DRIVERS_DIR}" \;
