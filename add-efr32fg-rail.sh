@@ -1,4 +1,7 @@
 #! /bin/bash
+
+# note: this script is valid vor RAIL version 1.1.0.0
+
 set -euo pipefail
 IFS=$'\n\t'
 
@@ -59,8 +62,8 @@ find "${PACK_LOCATION}/submodules/${DRIVERS_DIR}" -name '*.h' -exec cp '{}' "${D
 cp "${PACK_LOCATION}/submodules/kits/common/${BSP_DIR}"/*.h "${DEST_INCLUDE_DIR}/${BSP_DIR}"
 cp "${PACK_LOCATION}/submodules/kits/EFR32FG1_BRD4252A/config"/*.h "${DEST_INCLUDE_DIR}/${BSP_DIR}"
 cp "${PACK_LOCATION}"/submodules/rail_lib/common/*.h "${DEST_INCLUDE_DIR}/${RAIL_LIB}"
-cp "${PACK_LOCATION}"/submodules/rail_lib/phy/efr32/*.h "${DEST_INCLUDE_DIR}/${RAIL_LIB}"
-cp "${PACK_LOCATION}"/submodules/efrseq/common/cortex/*.h "${DEST_INCLUDE_DIR}/${RAIL_LIB}"
+cp "${PACK_LOCATION}"/submodules/rail_lib/chip/efr32/*.h "${DEST_INCLUDE_DIR}/${RAIL_LIB}"
+cp "${PACK_LOCATION}"/submodules/rail_lib/chip/efr32/rf/common/cortex/*.h "${DEST_INCLUDE_DIR}/${RAIL_LIB}"
 
 cp "${PACK_LOCATION}/submodules/Device/SiliconLabs/${DEVICE_DIR}/Source"/*.c "${DEST_SOURCE_DIR}/${DEVICE_DIR}"
 cp "${PACK_LOCATION}/submodules/${LIBRARY_DIR}/src"/*.c "${DEST_SOURCE_DIR}/${LIBRARY_DIR}"
