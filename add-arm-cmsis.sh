@@ -13,10 +13,12 @@ fi
 PROJECT_LOCATION=$1
 DEST_LOCATION="${PROJECT_LOCATION}/xpacks/arm-cmsis"
 DEST_INCLUDE_DIR="${DEST_LOCATION}/include"
+DEST_DRIVER_DIR="${DEST_LOCATION}/driver"
 
 # package definitions
 PACK_LOCATION="$HOME/Projects/xpacks/arm-cmsis.git"
 PACK_INCLUDE_DIR="${PACK_LOCATION}/CMSIS/Include"
+PACK_DRIVER_DIR="${PACK_LOCATION}/CMSIS/Driver/Include"
 PACK_GIT_HOME="https://github.com/xpacks/arm-cmsis.git"
 
 if [ ! -e ${PACK_LOCATION} ]
@@ -30,7 +32,9 @@ rm -rf "${DEST_LOCATION}"
 
 # create new dirs
 mkdir -p "${DEST_INCLUDE_DIR}"
+mkdir -p "${DEST_DRIVER_DIR}"
 
 #copy required files
 cp -r "${PACK_INCLUDE_DIR}"/* "${DEST_INCLUDE_DIR}"
+cp -r "${PACK_DRIVER_DIR}"/* "${DEST_DRIVER_DIR}"
 
