@@ -11,7 +11,7 @@ fi
 
 # project location and definitions
 PROJECT_LOCATION=$1
-DEST_LOCATION="${PROJECT_LOCATION}/xpacks/cmsis-plus"
+DEST_LOCATION="${PROJECT_LOCATION}/xpacks/micro-os-plus"
 DEST_INCLUDE_DIR="${DEST_LOCATION}/include"
 DEST_SOURCE_DIR="${DEST_LOCATION}/src"
 PROJECT_CONFIG_DIR="${PROJECT_LOCATION}/include"
