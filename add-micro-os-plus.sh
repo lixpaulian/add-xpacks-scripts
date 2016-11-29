@@ -19,7 +19,7 @@ PROJECT_CONFIG_DIR="${PROJECT_LOCATION}/include"
 # package definitions
 PACK_LOCATION="$HOME/Projects/xpacks/micro-os-plus-iii.git"
 PACK_INCLUDE_DIR="${PACK_LOCATION}/include"
-PACK_SOURCE_DIR="${PACK_LOCATION}/src/rtos"
+PACK_SOURCE_DIR="${PACK_LOCATION}/src"
 PACK_GIT_HOME="https://github.com/micro-os-plus/micro-os-plus-iii.git"
 
 if [ ! -e ${PACK_LOCATION} ]
@@ -29,13 +29,13 @@ then
 fi
 
 # delete old components
-#rm -rf "${DEST_LOCATION}"
+rm -rf "${DEST_LOCATION}"
 
 # create new dirs
 mkdir -p "${DEST_INCLUDE_DIR}"
-mkdir -p "${DEST_SOURCE_DIR}/rtos/port"
+mkdir -p "${DEST_SOURCE_DIR}"
 
 #copy required files
 cp -r "${PACK_INCLUDE_DIR}"/* "${DEST_INCLUDE_DIR}"
-cp -r "${PACK_SOURCE_DIR}"/* "${DEST_SOURCE_DIR}/rtos/port"
+cp -r "${PACK_SOURCE_DIR}"/* "${DEST_SOURCE_DIR}"
 
