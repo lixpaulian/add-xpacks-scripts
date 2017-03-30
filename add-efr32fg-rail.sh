@@ -48,15 +48,15 @@ mkdir -p "${DEST_SOURCE_DIR}/${LIBRARY_DIR}"
 mkdir -p "${DEST_SOURCE_DIR}/${RAIL_LIB}"
 
 # copy required files
-cp "${PACK_LOCATION}/submodules/Device/SiliconLabs/${DEVICE_DIR}/Include"/*.h "${DEST_INCLUDE_DIR}/${DEVICE_DIR}"
-cp "${PACK_LOCATION}/submodules/${LIBRARY_DIR}/inc"/*.h "${DEST_INCLUDE_DIR}/${LIBRARY_DIR}"
-cp "${PACK_LOCATION}"/submodules/rail_lib/common/*.h "${DEST_INCLUDE_DIR}/${RAIL_LIB}"
-cp "${PACK_LOCATION}"/submodules/rail_lib/chip/efr32/*.h "${DEST_INCLUDE_DIR}/${RAIL_LIB}"
-cp "${PACK_LOCATION}"/submodules/rail_lib/chip/efr32/rf/common/cortex/*.h "${DEST_INCLUDE_DIR}/${RAIL_LIB}"
-find "${PACK_LOCATION}"/submodules/rail_lib/protocol -name '*.h' -exec cp '{}' "${DEST_INCLUDE_DIR}/${RAIL_LIB}" \;
+cp "${PACK_LOCATION}/platform/Device/SiliconLabs/${DEVICE_DIR}/Include"/*.h "${DEST_INCLUDE_DIR}/${DEVICE_DIR}"
+cp "${PACK_LOCATION}/platform/${LIBRARY_DIR}/inc"/*.h "${DEST_INCLUDE_DIR}/${LIBRARY_DIR}"
+cp "${PACK_LOCATION}/platform/radio/rail_lib/common"/*.h "${DEST_INCLUDE_DIR}/${RAIL_LIB}"
+cp "${PACK_LOCATION}/platform/radio/rail_lib/chip/efr32"/*.h "${DEST_INCLUDE_DIR}/${RAIL_LIB}"
+cp "${PACK_LOCATION}/platform/radio/rail_lib/chip/efr32/rf/common/cortex"/*.h "${DEST_INCLUDE_DIR}/${RAIL_LIB}"
+find "${PACK_LOCATION}/platform/radio/rail_lib/protocol" -name '*.h' -exec cp '{}' "${DEST_INCLUDE_DIR}/${RAIL_LIB}" \;
 
-cp "${PACK_LOCATION}/submodules/Device/SiliconLabs/${DEVICE_DIR}/Source"/*.c "${DEST_SOURCE_DIR}/${DEVICE_DIR}"
-cp "${PACK_LOCATION}/submodules/${LIBRARY_DIR}/src"/*.c "${DEST_SOURCE_DIR}/${LIBRARY_DIR}"
+cp "${PACK_LOCATION}/platform/Device/SiliconLabs/${DEVICE_DIR}/Source"/*.c "${DEST_SOURCE_DIR}/${DEVICE_DIR}"
+cp "${PACK_LOCATION}/platform/${LIBRARY_DIR}/src"/*.c "${DEST_SOURCE_DIR}/${LIBRARY_DIR}"
 cp "${PACK_LOCATION}"/lib/librail_efr32.a "${DEST_SOURCE_DIR}/${RAIL_LIB}"
 
 
