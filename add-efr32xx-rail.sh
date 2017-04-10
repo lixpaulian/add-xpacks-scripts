@@ -26,8 +26,8 @@ BSP_DIR="bsp"
 RAIL_LIB="rail-lib"
 
 # package definitions
-PACK_LOCATION="$HOME/Projects/xpacks/efr32fg-rail.git"
-PACK_GIT_HOME="https://github.com/lixpaulian/efr32fg-rail.git"
+PACK_LOCATION="$HOME/Projects/xpacks/efr32xx-rail.git"
+PACK_GIT_HOME="https://github.com/lixpaulian/efr32xx-rail.git"
 
 if [ ! -e ${PACK_LOCATION} ]
 then
